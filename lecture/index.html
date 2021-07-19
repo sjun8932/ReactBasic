@@ -24,7 +24,7 @@
 
             render(){
                 return <button type="submit" onClick={ () => { this.setState({ liked: true })} }>
-                        {this.state.liked === true ? 'Liked' : 'Like'}
+                        {this.state.liked === true ? '앙 기모찌' : '좋아요'}
                     </button>
                 // JSX 문법 (JS + XML)
                 // <button onclick = "() => { console.log('clicked') }" type="submit">Liked</button>
@@ -32,7 +32,7 @@
         }
     </script>
     <script type="text/babel">
-        ReactDOM.render(<div><LikeButton /><LikeButton /><LikeButton /><LikeButton /></div>, document.querySelector('#root'));
+        ReactDOM.render(<div><LikeButton /><br/><LikeButton /><br/><LikeButton /><br/><LikeButton /></div>, document.querySelector('#root'));
     </script>
 </body>
 </html>
