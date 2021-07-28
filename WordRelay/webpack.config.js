@@ -15,7 +15,6 @@ module.exports = {
     },
 
     module: {
-
         rules: [{
             test: /\.jsx?/,
             loader: 'babel-loader',
@@ -28,6 +27,7 @@ module.exports = {
             },
         }],
     },
+    
     plugins:[
         new RefreshWebpackPlugin(), new webpack.LoaderOptionsPlugin( {debug: true} )
     ],
@@ -38,6 +38,7 @@ module.exports = {
     },
     devServer:{
         publicPath: '/dist',
-        hot: true
+        hot: true,
+        port: 5500
     },
 };

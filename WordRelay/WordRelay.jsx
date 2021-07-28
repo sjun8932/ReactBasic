@@ -1,51 +1,51 @@
 const React = require('react');
-const {Component} = React;
+const { useState, useRef} = React;
 
-class WordRelay extends Component {
-    state = {
-        word: '시작',
-        value: '',
-        result:'',
-    };
+const WordRelay = () => {
+    
+    const [word, setWord] = useState('제시어 : 시작');
+    const [value, setValue] = useState('');
+    const [result, setResult] = useState('');
+    const inputRef = useRef(null);
+    
 
-    onSubmitForm = (e) => {
+    const onSubmitForm = (e) => {
+    
         e.preventDefault();
-        if(this.state.word[this.state.word.length-1] === this.state.value[0]){
-            this.setState({
-                result: '정답입니다',
-                word: this.state.value,
-                value: '',
-            });
-            this.input.focus(); 
+        if(word[word.length-1] === value[0]){
+                var element = document.body;
+                element.style.backgroundColor = "green";   
+                setResult('정답입니다'),
+                setWord(value),
+                setValue(''), 
+                inputRef.current.focus(); 
         } else{
-            this.setState({
-                result: '틀렸습니다',
-                value: '',
-            });
-            this.input.focus();
+                var element = document.body;
+                element.style.backgroundColor = "red";   
+                setResult('틀렸습니다'),
+                setValue(''),
+                inputRef.current.focus();
         }
     };
 
-    onChangeInput = (e) => {
-        this.setState({ value: e.target.value });
+    const onChangeInput = (e) => {
+        setValue(e.target.value);
     };
-
-    onReInput = (c) => {
-        this.input = c;
-    };
-
-    render() {
+    
         return (
             <>
-                <div>{this.state.word}</div>
-                <form onSubmit = {this.onSubmitForm}>
-                    <input ref={this.onReInput} value={this.state.value} onChange={this.onChangeInput}/>
+            <div style={{color:"black", position:"absolute", top:"50%", left:"50%" ,transform: "translate(-50%, -50%)" , textAlign:"center"}}>
+                <div style ={{textAlign:"center"}}>{word}</div>
+                <form onSubmit = {onSubmitForm} >
+                    <label htmlFor="sexy">😂😁😉😘😊끝말잇기 조져부러😎😒🤣😒😂</label>
+                    <br></br>
+                    <input id="sexy" ref={inputRef} value={value} onChange={onChangeInput} />
                     <button>클릭!</button>
                 </form>
-                <div>{this.state.result}</div>
+                <div><h1>{result}</h1></div>
+            </div>
             </>
         );
     }
-}
 
 module.exports = WordRelay;
