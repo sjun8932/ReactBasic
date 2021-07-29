@@ -34,7 +34,7 @@ const WordRelay = () => {
                 <div>{word}</div>
                 <form onSubmit = {onSubmitForm} >
                     <label htmlFor="sexy">끝말잇기</label>
-                    <input id="sexy" ref={inputRef} value={value} onChange={onChangeInput} />
+                    <input id="sexy" className="sexy" ref={inputRef} value={value} onChange={onChangeInput} />
                     <button>클릭!</button>
                 </form>
                 <div><h1>{result}</h1></div>
