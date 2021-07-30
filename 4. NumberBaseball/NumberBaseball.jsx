@@ -29,6 +29,11 @@ class NumberBaseball extends Component {
                     <input maxLength={4} value={this.state.value} onChange={this.onChangeInput} />
                 </form>
                 <div>시도: {this.state.tries.length}</div>
+                <ul>
+                    {['시은','수민','아이사','세은','윤','재이'].map( (v) => {
+                        return(<li>{v}</li>);
+                    })}
+                </ul>
             </>
         );
     }
