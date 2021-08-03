@@ -3,23 +3,28 @@ import Try from './Try';
 
 function getNumbers () {
 
-};
+}
 
 class NumberBaseball extends Component {
-    
-    state = {
-        result: '',
-        value: '',
-        answer: getNumbers(),
-        tries: [],
+    constructor(props) {
+        super(props);
+        this.state = {
+            result: '',
+            value: '',
+            answer: getNumbers(),
+            tries: [],
+        }
+        this.onSubmitForm = this.onSubmitForm.bind(this);
+        this.onChangeInput = this.onChangeInput.bind(this);
     }
 
-    onSubmitForm = () => {
+
+    onSubmitForm (e) {
 
     };
     
-    onChangeInput = () => {
-    
+    onChangeInput (e)  {
+
     };
 
     StayC = [
