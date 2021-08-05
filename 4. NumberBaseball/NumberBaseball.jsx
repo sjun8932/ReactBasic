@@ -20,14 +20,16 @@ class NumberBaseball extends Component {
             value: '',
             answer: getNumbers(), // ex : [1,3,5,7]
             tries: [],
+            true: '정답!! 🤣🤣🤣🤣🤣',
+            false: '틀렸어요 🤣🤣🤣🤣🤣'
         };
-        console.log(this.state.answer);
+        console.log(this.state.answer)
         this.onSubmitForm = this.onSubmitForm.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
     }
 
     onChangeInput(e) {
-        console.log(this.state.answer);
+
         this.setState({
             value: e.target.value,
         });
@@ -40,6 +42,7 @@ class NumberBaseball extends Component {
                 result: '홈런',
                 tries: [...this.state.tries, {try: this.state.value, result: '홈런!'}],
             })
+            alert(`${this.state.true}`);
             alert('게임을 다시 시작합니다!');
             this.setState({
                 value: '',
@@ -51,8 +54,9 @@ class NumberBaseball extends Component {
             let strike = 0;
             let ball = 0;
             if (this.state.tries.length >= 9) { // 10번 이상 틀렸을 때
+                alert(`10번 넘게 ${this.state.false}`);
                 this.setState({
-                    result: `10번 넘게 틀려서 실패! 답은 ${this.state.answer.join(',')}이었습니다.`,
+                    result: `10번 넘게 틀려서 실패! 답은 ${this.state.answer.join(',')}이었습니다.`
                 });
                 alert('게임을 다시 시작합니다!');
                 this.setState({
