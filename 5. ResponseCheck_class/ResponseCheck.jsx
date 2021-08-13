@@ -14,7 +14,7 @@ class ResponseCheck extends Component {
     endTime;
 
     onClickScreen = () => {
-        const{ state, message, result } = this.state; // 매번 this.state가 쓰기 싫으면 미리미리 구조분해 할당을 해놓자....
+        const{ state } = this.state; // 매번 this.state가 쓰기 싫으면 미리미리 구조분해 할당을 해놓자....
         if ( state === 'waiting' ){
             this.setState({
                 state: 'ready', // red
@@ -45,13 +45,32 @@ class ResponseCheck extends Component {
         }
     };
 
+    onReset = () => {
+        this.setState({
+            result:[]
+        });
+    };
+
+    renderAverage = () => {
+        const {result} = this.state;
+        return (
+
+            result.length === 0 ? null :
+                <>
+                    <div> 평균시간 : {this.state.result.reduce((a,c) => a + c) / this.state.result.length}ms</div>
+                    <button onClick={this.onReset}>리셋</button>
+                </>
+        )
+    }
+
     render(){
+        const { state, message } = this.state;
         return (
             <>
-                <div id="screen" className={this.state.state} onClick={this.onClickScreen}>
-                    {this.state.message}
+                <div id="screen" className={state} onClick={this.onClickScreen}>
+                    {message}
                 </div>
-                {this.state.result.length === 0 ? null : <div> 평균시간 : {this.state.result.reduce((a,c) => a + c) / this.state.result.length}ms</div>}
+                {this.renderAverage()}
             </>
         );
     }
