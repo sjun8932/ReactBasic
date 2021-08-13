@@ -38,13 +38,13 @@ const ResponseCheckHooks = () => {
         setResult([]);
     }
 
-    const renderAverage = () => {
-        return result.length === 0 ? null :
-            <>
-                <div>평균시간 : {result.reduce( (a,c) => (a + c) / result.length)}ms</div>
-                <button onClick={onReset}>리셋</button>
-            </>
-    }
+    // const renderAverage = () => {
+    //     return result.length === 0 ? null :
+    //         <>
+    //             <div>평균시간 : {result.reduce( (a,c) => (a + c) / result.length)}ms</div>
+    //             <button onClick={onReset}>리셋</button>
+    //         </>
+    // }
 
 
     return (
@@ -52,7 +52,18 @@ const ResponseCheckHooks = () => {
             <div id="screen" className={state} onClick={onClickScreen}>
                 {message}
             </div>
-            {renderAverage()}
+            {(() => {
+                if (result.length === 0){
+                    return null;
+                } else {
+                    return result.length === 0 ? null :
+                        <>
+                            <div>평균시간 : {result.reduce( (a,c) => (a + c) / result.length)}ms</div>
+                            <button onClick={onReset}>리셋</button>
+                        </>
+                }
+            })()}
+            {/*{renderAverage()}*/}
         </>
     );
 };
