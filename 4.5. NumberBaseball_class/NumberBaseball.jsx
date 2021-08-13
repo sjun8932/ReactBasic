@@ -34,7 +34,7 @@ class NumberBaseball extends Component {
         });
     };
 
-    inputRef = createRef();
+    inputRef = createRef(); // createRef의 경우 클래스건 hooks건 current가 꼭 들어간다.
 
     onSubmitForm(e) {
         e.preventDefault();
