@@ -14,12 +14,6 @@ const scores = {
 };
 
 function computerChoice(imgCoord) {
-    const a = Object.entries(rspCoords);
-    console.log(a);
-    const b = a.find(function(v){
-        return v[1] === imgCoord;
-    })
-    console.log(b);
     return Object.entries(rspCoords).find(function (v){
         return v[1] === imgCoord;
     })[0];
@@ -64,7 +58,7 @@ class RSP extends Component {
         }
     }
 
-    onClickBtn = (choice) => {
+    onClickBtn = (choice) => () =>  {
         const {imgCoord} = this.state;
         clearInterval(this.interval);
         const myScore = scores[choice];
@@ -91,7 +85,7 @@ class RSP extends Component {
         }
         setTimeout( () => {
             this.interval = setInterval (this.changeHand, 100);
-        }, 2000);
+        }, 1000);
     };
 
     render() {
@@ -100,9 +94,9 @@ class RSP extends Component {
             <>
                 <div id="computer" style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0` }} />
                 <div>
-                    <button id="바위" className="btn" onClick={() => this.onClickBtn('바위')}>바위</button>
-                    <button id="가위" className="btn" onClick={() => this.onClickBtn('가위')}>가위</button>
-                    <button id="보" className="btn" onClick={() => this.onClickBtn('보')}>보</button>
+                    <button id="바위" className="btn" onClick={this.onClickBtn('바위')}>바위</button>
+                    <button id="가위" className="btn" onClick={this.onClickBtn('가위')}>가위</button>
+                    <button id="보" className="btn" onClick={this.onClickBtn('보')}>보</button>
                 </div>
                 <div>{result}</div>
                 <div>현재 {score}점</div>
