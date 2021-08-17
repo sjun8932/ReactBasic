@@ -6,6 +6,7 @@
 5.5 ResponseCheck_Hooks/node_modules
 6. RSP_class/node_modules
 Test) RenderTest/node_modules
+Test) UseEffect/node_modules
 .idea/*
 .idea/workspace.xml
 .idea/modules.xml
