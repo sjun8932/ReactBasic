@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from "react";
 import { useEffect } from 'react';
 import { useRef } from 'react';
+import { useMemo } from 'react';
+import { useCallback } from "react";
 import Ball from './Ball'
 
 function getWinNumbers(){
@@ -16,7 +18,8 @@ function getWinNumbers(){
 }
 
 const Lotto = ()=> {
-    const [ winNumbers, setWinNumbers] = useState(getWinNumbers());
+    const lottoNumbers = useMemo ( () => getWinNumbers() , [])
+    const [ winNumbers, setWinNumbers] = useState(lottoNumbers);
     const [ winBalls, setWinBalls] = useState([]);
     const [ bonus, setBonus ] = useState(null);
     const [ redo, setRedo ] = useState(false);
@@ -34,13 +37,14 @@ const Lotto = ()=> {
         },7000);
     },[timeouts.current]);
 
-    const onClickRedo = () => {
+    const onClickRedo = useCallback (() => {
+        console.log('onClickRedo')
         setWinNumbers(getWinNumbers());
         setWinBalls([]);
         setBonus(null);
         setRedo(false);
         timeouts.current = [];
-    }
+    },[winNumbers])
 
     return (
         <>
