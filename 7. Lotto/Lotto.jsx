@@ -37,8 +37,11 @@ const Lotto = ()=> {
         },7000);
     },[timeouts.current]);
 
+    useEffect(()=>{
+        console.log('로또 숫자를 생성합니다');
+    },[winNumbers]);
+
     const onClickRedo = useCallback (() => {
-        console.log('onClickRedo')
         setWinNumbers(getWinNumbers());
         setWinBalls([]);
         setBonus(null);
